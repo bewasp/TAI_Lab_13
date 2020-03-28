@@ -1,7 +1,7 @@
 var Complex = /** @class */ (function () {
     function Complex(r, u) {
         this.rzeczywista = r;
-        this.urojona - u;
+        this.urojona = u;
     }
     Complex.prototype.add = function (Num) {
         return new Complex(Num.rzeczywista + this.rzeczywista, Num.urojona + this.urojona);
