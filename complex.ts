@@ -4,7 +4,7 @@ class Complex {
 
     constructor(r: number, u: number) {
         this.rzeczywista = r;
-        this.urojona - u;
+        this.urojona = u;
     }
 
     add(Num : Complex) : Complex {
