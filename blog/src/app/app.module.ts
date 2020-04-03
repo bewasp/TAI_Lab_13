@@ -11,9 +11,14 @@ import { BlogItemComponent } from './components/blog-item/blog-item.component';
 import { BlogItemTextComponent } from './components/blog-item-text/blog-item-text.component';
 import { BlogItemImageComponent } from './components/blog-item-image/blog-item-image.component';
 import { BlogItemDetailsComponent } from './components/blog-item-details/blog-item-details.component';
-import {HttpClientModule} from "@angular/common/http";
-import {DataService} from "./services/data.service";
+import { HttpClientModule } from "@angular/common/http";
+import { DataService } from "./services/data.service";
 import { SummaryPipe } from './pipes/summary.pipe';
+import { SearchBarComponent } from './shared/search-bar/search-bar.component';
+import { BlogHomeComponent } from './components/blog-home/blog-home.component';
+import { FilterPipe } from "./pipes/filter.pipe";
+import { TextFormatDirective } from './directives/text-format.directive';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,11 +32,16 @@ import { SummaryPipe } from './pipes/summary.pipe';
     BlogItemImageComponent,
     BlogItemDetailsComponent,
     SummaryPipe,
+    SearchBarComponent,
+    BlogHomeComponent,
+    FilterPipe,
+    TextFormatDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     DataService
