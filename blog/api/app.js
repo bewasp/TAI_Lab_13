@@ -1,25 +1,38 @@
-import express from 'express';
+'use strict';
 
+import express from 'express';
+import morgan from 'morgan';
+import mongoose from 'mongoose';
+import routes from './REST/routes';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 const app = express();
 
+
 app.use(express.static('public'));
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(cors());
 
-const posts = [
-  {
-    id: 1, title: "tytul1", text: "Text1"
-  },
-  {
-    id: 2, title: "tytul2", text: "Text2"
-  },
-  {
-    id: 3, title: "tytul3", text: "Text3"
-  }
-];
+mongoose.connect('mongodb://tai:taitai1@ds147180.mlab.com:47180/tai'
+  , {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}, (error) => {
+    if (error) {
+      console.error(error);
+    }
+    else {
+      console.log('Connect with database established');
+    }
+  });
 
-app.get('/api/posts', (req, res) => {
-  res.send(posts);
+process.on('SIGINT', () => {
+  mongoose.connection.close(function () {
+    console.error('Mongoose default connection disconnected through app termination');
+    process.exit(0);
+  });
 });
 
-app.listen(3000, function () {
-  console.log('Server is running!');
+routes(app);
+app.listen(3000, () => {
+  console.info(`Server is running at 3000`)
 });
