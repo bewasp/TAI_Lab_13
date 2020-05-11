@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from "../../services/data.service";
-import {Router} from "@angular/router";
+import {DataService} from '../../services/data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -9,22 +9,21 @@ import {Router} from "@angular/router";
 })
 export class AddPostComponent implements OnInit {
 
+
   public post = {
     title: '',
     url: '',
     content: '',
-  }
+  };
 
-  constructor(private dataService: DataService, private router: Router) {
-  }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
   }
 
   save() {
     this.dataService.createOrUpdate(this.post).subscribe(f => {
-      this.router.navigate(['/blog'])
-    })
+      this.router.navigate(['/blog']);
+    });
   }
 }
-
