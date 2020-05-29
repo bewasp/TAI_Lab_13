@@ -7,7 +7,6 @@ import applicationException from '../service/applicationException';
 import mongoConverter from '../service/mongoConverter';
 import uniqueValidator from 'mongoose-unique-validator';
 
-
 const userRole = {
   admin: 'admin',
   user: 'user'
@@ -22,12 +21,12 @@ const userSchema = new mongoose.Schema({
   active: { type: Boolean, default: false, required: false },
   isAdmin: { type: Boolean, default: false, required: false }
 }, {
-  collection: 'wk_user'
+  collection: 'jz_user'
 });
 
 userSchema.plugin(uniqueValidator);
 
-const UserModel = mongoose.model('wk_user', userSchema);
+const UserModel = mongoose.model('jz_user', userSchema);
 
 function createNewOrUpdate(user) {
   return Promise.resolve().then(() => {

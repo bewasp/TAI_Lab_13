@@ -11,12 +11,13 @@
   <li class="nav-item">
     <a class="nav-link" routerLink='/add-post' class="btn btn-primary">Dodaj post</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink='/login' class="btn btn-primary">Zaloguj</a>
+  <li>
+    <a class="nav-link" routerLink="/login" *ngIf="!authService.currentUser" class="btn btn-primary">Zaloguj</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink='/signup' class="btn btn-primary">Zarejestruj</a>
+  <li>
+    <button class="nav-link" (click)="logOut()" *ngIf="authService.currentUser" class="btn btn-primary">Wyloguj</button>
+  </li>
+  <li>
+    <a class="nav-link" routerLink="/signup" *ngIf="!authService.currentUser" class="btn btn-primary">Zarejestruj</a>
   </li>
 </ul>
-
-<button (click)="logOut()" class="dropdown-item">Wyloguj</button>

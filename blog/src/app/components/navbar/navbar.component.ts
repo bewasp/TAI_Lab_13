@@ -12,10 +12,11 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
-    this.authService.logout().subscribe(() => {
+    return this.authService.logout().subscribe((response) => {
       this.router.navigate(['/']);
     });
   }
+
 
   ngOnInit(): void {
   }
