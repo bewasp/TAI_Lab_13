@@ -841,8 +841,7 @@ var ContactComponent = /** @class */ (function () {
     function ContactComponent(elementRef) {
         this.elementRef = elementRef;
     }
-    ContactComponent.prototype.ngAfterViewInit = function () {
-        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'darkgray';
+    ContactComponent.prototype.ngOnInit = function () {
     };
     ContactComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1030,7 +1029,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav justify-content-center\">\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='' class=\"btn btn-primary\">Home</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='/blog' class=\"btn btn-primary\">Blog</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='/contact' class=\"btn btn-primary\">Kontakt</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='/add-post' class=\"btn btn-primary\">Dodaj post</a>\n  </li>\n</ul>\n\n<a class=\"nav-link\" routerLink=\"/login\" *ngIf=\"!authService.currentUser\">Zaloguj</a>\n<button class=\"nav-link\" (click)=\"logOut()\" *ngIf=\"authService.currentUser\">Wyloguj</button>\n<a class=\"nav-link\" routerLink=\"/signup\" *ngIf=\"!authService.currentUser\">Zarejestruj</a>\n"
+module.exports = "<ul class=\"nav justify-content-center\">\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='' class=\"btn btn-primary\">Home</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='/blog' class=\"btn btn-primary\">Blog</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='/contact' class=\"btn btn-primary\">Kontakt</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" routerLink='/add-post' class=\"btn btn-primary\">Dodaj post</a>\n  </li>\n  <li>\n    <a class=\"nav-link\" routerLink=\"/login\" *ngIf=\"!authService.currentUser\" class=\"btn btn-primary\">Zaloguj</a>\n  </li>\n  <li>\n    <button class=\"nav-link\" (click)=\"logOut()\" *ngIf=\"authService.currentUser\" class=\"btn btn-primary\">Wyloguj</button>\n  </li>\n  <li>\n    <a class=\"nav-link\" routerLink=\"/signup\" *ngIf=\"!authService.currentUser\" class=\"btn btn-primary\">Zarejestruj</a>\n  </li>\n</ul>\n"
 
 /***/ }),
 
@@ -1497,7 +1496,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
-        this.url = 'http://localhost:3000/api';
+        this.url = 'https://blogtaiapp.herokuapp.com/api';
     }
     AuthService.prototype.authenticate = function (credentials) {
         return this.http.post(this.url + '/user/auth', {
@@ -1579,7 +1578,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.url = 'http://localhost:3000';
+        this.url = 'https://blogtaiapp.herokuapp.com';
     }
     DataService.prototype.getAll = function () {
         return this.http.get(this.url + '/api/posts');
